@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    {% if title %}
+    <title>Alb Shoes | {{ title }} </title>
+    {% else %}
+    <title>Alb Shoes Web</title>    
+    {% endif %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="{% static 'e_web/img/fav.png' %}" rel="shortcut icon"/>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'e_web/css/bootstrap.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'e_web/css/font-awesome.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'e_web/css/flaticon.css' %}"/>
+	<link rel="stylesheet" href="{% static 'e_web/css/slicknav.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'e_web/css/jquery-ui.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'e_web/css/owl.carousel.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'e_web/css/animate.css' %}"/>
+	<link rel="stylesheet" href="{% static 'e_web/css/style.css' %}"/>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+
+	<!--<div id="preloder">
+		<div class="loader"></div>
+	</div>-->
+
+	
+	<header class="header-section">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 text-center text-lg-left">
+						
+						<a href="{% url 'kreu:home' %}" class="site-logo">
+							<img  width="120" height="45" src="{% static 'e_web/img/logo.png' %}" alt="">
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-5">
+						<form class="header-search-form">
+							<input type="text" placeholder="Kerko ne AlbShoes ....">
+							<button><i class="flaticon-search"></i></button>
+						</form>
+					</div>
+					<div class="col-xl-4 col-lg-5">
+						<div class="user-panel">
+							{% if user.is_authenticated %}
+							<div class="up-item"><a href="{% url 'kreu:home' %}">
+								<i class="flaticon-home"></i>
+								{{ user.get_username|capfirst }}</a>
+							</div>
+							<div class="up-item">
+								
+								<a class="mr-4" href="{% url 'kreu:logout' %}"><i class="flaticon-logout"></i>Dil</a>
+							</div>
+							{% else %}
+								<div class="up-item">
+								
+								<a href="{% url 'kreu:login' %}"><i class="flaticon-profile"></i>Hyr</a> ose </i><a href="{% url 'kreu:register' %}">Regjistrohu</a>
+								</div>
+							{% endif %}
+							
+							<div class="up-item">
+								<a href="{% url 'kreu:shporta' %}">
+								<div class="shopping-card">
+									<i class="flaticon-bag"></i>
+									{% if user.is_authenticated %}
+									<span>{{ numri_shportes }}</span>
+									{% else %}
+									{% endif %}
+								</div>
+								Shporta</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="main-navbar">
+			<div class="container">
+				
+				<ul class="main-menu text-center">
+					<li><a href="{% url 'kreu:home' %}">Kryefaqja</a></li>	
+					<li><a href="{% url 'kreu:kategorite' %}">Kategorite</a>
+						<ul class="sub-menu">
+							<li><a href="#">Kepuce</a></li>
+							<li><a href="#">Atlete</a></li>
+							<li><a href="#">Sandale</a></li>
+							<li><a href="#">Cizme</a></li>
+							<li><a href="#">Klasike</a></li>
+						</ul>
+					</li>
+                    <li><a href="{% url 'kreu:shporta' %}">Shporta</a></li>
+                    <li><a href="{% url 'kreu:pagesa' %}">Pagesa</a></li>
+                    <li><a href="{% url 'kreu:kontakt' %}">Kontakt</a></li>					
+				</ul>
+			</div>
+		</nav>
+	</header>
+	
+
+
+
+	{% block body %}{% endblock %}
+	
+
+
+	
+	<section class="footer-section">
+		<div class="container">
+			<div class="footer-logo text-center">
+				<a href="index.html"><img src="./img/logo-light.png" alt=""></a>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Rreth</h2>
+						<p>Ky eshte nje website ose dyqan online i krijuar nga Redian Marku per qellime praktike.</p>
+						<img src="img/cards.png" alt="">
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="">Rreth Nesh</a></li>
+							<li><a href="">Porosite</a></li>
+							<li><a href="">Kthimet</a></li>
+							<li><a href="">Pune</a></li>
+							<li><a href="">Blerje</a></li>
+							<li><a href="">Blog</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Partneret</a></li>
+							<li><a href="">Bloggeret</a></li>
+							<li><a href="">Support</a></li>
+							<li><a href="">Terms of Use</a></li>
+							<li><a href="">Press</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Pyetje</h2>
+						<div class="fw-latest-post-widget">
+							<div class="lp-item">
+								<div class="lp-thumb set-bg" data-setbg="{% static 'e_web/img/blog-thumbs/1.jpg' %}"></div>
+								<div class="lp-content">
+									<h6>cfare kepucesh te veshim?</h6>
+									<span>Jan 6, 2020</span>
+									<a href="#" class="readmore">Lexo me shume</a>
+								</div>
+							</div>
+							<div class="lp-item">
+								<div class="lp-thumb set-bg" data-setbg="{% static 'e_web/img/blog-thumbs/2.jpg' %}"></div>
+								<div class="lp-content">
+									<h6>trendet e vitit</h6>
+									<span>Jan 7, 2020</span>
+									<a href="#" class="readmore">Lexo me shume</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget contact-widget">
+						<h2>Kontakte</h2>
+						<div class="con-info">
+							<span>C.</span>
+							<p>Alb Shoes</p>
+						</div>
+						<div class="con-info">
+							<span>B.</span>
+							<p>4704 Mamurras, Albania </p>
+						</div>
+						<div class="con-info">
+							<span>T.</span>
+							<p>+355 692 13 1544</p>
+						</div>
+						<div class="con-info">
+							<span>E.</span>
+							<p>redian1marku@gmail.com</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="social-links-warp">
+			<div class="container">
+				<div class="social-links">
+					<a href="https://instagram.com/redian_" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+					<a href="mailto:redian1marku@gamil.com" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
+					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+					<a href="https://facebook.com/redi.marku.9" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="https://twitter.com/redian_marku" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+					<a href="https://www.youtube.com/channel/UCTQlnuH5UHKZnhRv_wWL4sw?view_as=subscriber" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+				</div>
+
+
+<p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed and developed with <i class="fa fa-heart-o" aria-hidden="true"></i> by Redian Marku.</p>
+
+
+			</div>
+		</div>
+	</section>
+	
+
+
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="{% static 'e_web/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'e_web/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'e_web/js/jquery.slicknav.min.js' %}"></script>
+	<script src="{% static 'e_web/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'e_web/js/jquery.nicescroll.min.js' %}"></script>
+	<script src="{% static 'e_web/js/jquery.zoom.min.js' %}"></script>
+	<script src="{% static 'e_web/js/jquery-ui.min.js' %}"></script>
+	<script src="{% static 'e_web/js/main.js' %}"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	  </script>
+
+	</body>
+</html>

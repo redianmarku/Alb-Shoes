@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+	
+	<section class="hero-section">
+		<div class="hero-slider owl-carousel">
+			<div class="hs-item set-bg" data-setbg="{% static 'e_web/img/bg.jpg' %}">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-6 col-lg-7 text-white">
+							<span>Te reja</span>
+							<h2>Nike EXP-X14</h2>
+							<p>
+								E pajisur me teknologji React dhe ndërtim të lehtë, Nike EXP-X14 është një model i shpejtë dhe i rehatshëm. Ato kanë një kombinim tekstili dhe sintetik të sipërm, mbivendosje të tejdukshme, kabllot Flywire dhe një shtrirje gome. </p>
+							<a href="#te-gjitha" class="site-btn sb-line">ZBULO</a>
+							<a href="#te-gjitha" class="site-btn sb-white">SHTO NE SHPORTE</a>
+						</div>
+					</div>
+					<div class="offer-card text-white">
+						<span>nga</span>
+						<h2>€60</h2>
+						<p>Bli tani</p>
+					</div>
+				</div>
+			</div>
+			<div class="hs-item set-bg" data-setbg="{% static 'e_web/img/bg-2.jpg' %}">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-6 col-lg-7 text-white">
+							<span>Te reja</span>
+							<h2>Adidas NMD R1</h2>
+							<p>NMD-të me një funksionim të sipërm Primeknit sigurojnë një përshtatje si çorap për fleksibilitet dhe stabilitet gjatë çdo udhëtimi, ndërsa mesi i kepuces eshte jastëk i cili, maksimizon kthimin e energjisë.</p>
+							<a href="#te-gjitha" class="site-btn sb-line">ZBULO</a>
+							<a href="#te-gjitha" class="site-btn sb-white">SHTO NE SHPORTE</a>
+						</div>
+					</div>
+					<div class="offer-card text-white">
+						<span>nga</span>
+						<h2>€29</h2>
+						<p>Bli tani</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="slide-num-holder" id="snh-1"></div>
+		</div>
+	</section>
+	
+
+
+
+	
+	<section class="features-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4 p-0 feature">
+					<div class="feature-inner">
+						<div class="feature-icon">
+							<img src="{% static 'e_web/img/icons/1.png' %}" alt="#">
+						</div>
+						<h2>Pagese e shpejte dhe e sigurte</h2>
+					</div>
+				</div>
+				<div class="col-md-4 p-0 feature">
+					<div class="feature-inner">
+						<div class="feature-icon">
+							<img src="{% static 'e_web/img/icons/2.png' %}" alt="#">
+						</div>
+						<h2>Produkte origjinale</h2>
+					</div>
+				</div>
+				<div class="col-md-4 p-0 feature">
+					<div class="feature-inner">
+						<div class="feature-icon">
+							<img src="{% static 'e_web/img/icons/3.png' %}" alt="#">
+						</div>
+						<h2>Transporti i shpejte dhe falas</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="top-letest-product-section">
+		<div class="container">
+			<div class="section-title">
+				<h2>Produktet e fundit</h2>
+			</div>
+			<div class="product-slider owl-carousel">
+				{% for produkt in new_produkt %}
+				<div class="product-item">
+					<div class="pi-pic">
+						<div style="width: 345px;height: 400px; background-image: url('{{ produkt.produkt.foto.url }}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;"></div>
+						<div class="pi-links">
+							<a href="/shto_shport/{{ produkt.produkt.id }}" class="add-card"><i class="flaticon-bag"></i><span style="font-size: 9px">SHTO NE SHPORTE</span></a>
+							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+						</div>
+					</div>
+					<div class="pi-text">
+						<h6>€{{ produkt.produkt.cmimi }}</h6>
+						<p>{{ produkt.produkt.titulli }} </p>
+						
+					</div>
+				</div>
+				{% endfor %}
+				
+				</div></div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+	<section class="product-filter-section">
+		<div class="container">
+			<div class="section-title">
+				<h2 id="te-gjitha">TE GJITHA PRODUKTET</h2>
+			</div>
+			<ul class="product-filter-menu">
+				<li><a href="#">KEPUCE</a></li>
+				<li><a href="#">ATLETE</a></li>
+				<li><a href="#">SANDALE</a></li>
+				<li><a href="#">CIZME</a></li>
+				<li><a href="#">KEPUCE FORMALE</a></li>
+				<li><a href="#">KLASIKE</a></li>
+				<li><a href="#">FLIP-FLOPS</a></li>
+			</ul>
+			<div class="row">
+				{% for produkt in produktet %}
+				<div class="col-lg-3 col-sm-6">
+					<div class="product-item"style="margin: 6px">
+						<div class="pi-pic" >
+							
+						<div style="width: 100%;height: 250px; background-image: url('{{ produkt.foto.url }}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;"></div>
+							<div class="pi-links">
+								<a href="/shto_shport/{{ produkt.id }}" class="add-card"><i class="flaticon-bag"></i><span style="font-size: 9px">SHTO NE SHPORTE</span></a>
+								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+							</div>
+						</div>
+						<div class="pi-text">
+							<h6>€{{ produkt.cmimi }}</h6>
+							<p>{{ produkt.titulli }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="text-center pt-5">
+				<button class="site-btn sb-line sb-dark">SHIKO ME SHUME</button>
+			</div>
+		</div>
+	</section>
+	
+
+
+	<section class="banner-section">
+		<div class="container">
+			<div class="banner set-bg" data-setbg="https://previews.123rf.com/images/topdeq/topdeq1809/topdeq180900168/108908661-long-wide-banner-flat-lay-of-trendy-suede-shoes-female-accessories-and-cactus-on-white-background-wi.jpg">
+				<div class="tag-new">TE REJA</div>
+				<span>TE FUNDIT</span>
+				<h2>ZBULO SIPAS KATEGORIVE</h2>
+				<a href="{% url 'kreu:kategorite' %}" class="site-btn">KATEGORITE</a>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Pagesa</h4>
+			<div class="site-pagination">
+				<a href="">Kryefaqja</a> /
+				<a href="">Pagesa</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- checkout section  -->
+	<section class="checkout-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 order-2 order-lg-1">
+					<form class="checkout-form">
+						<div class="cf-title">Adresa e Fatures</div>
+						<div class="row">
+							<div class="col-md-7">
+								<p>*Informacionet e pageses</p>
+							</div>
+							<div class="col-md-5">
+								<div class="cf-radio-btns address-rb">
+									<div class="cfr-item">
+										<input type="radio" name="pm" id="one">
+										<label for="one">Perdor adresen aktuale</label>
+									</div>
+									<div class="cfr-item">
+										<input type="radio" name="pm" id="two">
+										<label for="two">Perdor nje tjeter adrese</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row address-inputs">
+							<div class="col-md-12">
+								<input type="text" placeholder="Adresa">
+								<input type="text" placeholder="Rruga">
+								<input type="text" placeholder="Qyteti">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Zip code">
+							</div>
+							<div class="col-md-6">
+								<input type="text" placeholder="Nr. Tel">
+							</div>
+						</div>
+						<div class="cf-title">Informacionet e Mberritjes</div>
+						<div class="row shipping-btns">
+							<div class="col-6">
+								<h4>Standard</h4>
+							</div>
+							<div class="col-6">
+								<div class="cf-radio-btns">
+									<div class="cfr-item">
+										<input type="radio" name="shipping" id="ship-1">
+										<label for="ship-1">Falas</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-6">
+								<h4>Mberritje brenda dites </h4>
+							</div>
+							<div class="col-6">
+								<div class="cf-radio-btns">
+									<div class="cfr-item">
+										<input type="radio" name="shipping" id="ship-2">
+										<label for="ship-2">€3.00</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cf-title">Pagesa</div>
+						<ul class="payment-list">
+							<li>Paypal<a href="#"><img src="img/paypal.png" alt=""></a></li>
+							<li>Credit / Debit card<a href="#"><img src="img/mastercart.png" alt=""></a></li>
+							<li>Paguaj mbas mberritjes se produktit</li>
+						</ul>
+						<button class="site-btn submit-order-btn">Bej Porosine</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- checkout section end -->
+
+	{% endblock %}
+

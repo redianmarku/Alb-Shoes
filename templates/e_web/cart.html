@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Shporta</h4>
+			<div class="site-pagination">
+				<a href="{% url 'kreu:home' %}">Kreyfaqja</a> /
+				<a href="{% url 'kreu:shporta' %}">Shporta</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- cart section end -->
+	<section class="cart-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="cart-table">
+						<h3>Shporta Juaj</h3>
+						<div class="cart-table-warp">
+							<table>
+							<thead>
+								<tr>
+									<th class="product-th">Produkti</th>
+									<th class="quy-th">Sasia</th>
+									<th class="size-th">Madhesia</th>
+									<th class="total-th">Cmimi</th>
+									<th class="quy-th" style="margin-left:10px; ">Fshij nga shporta</th>
+								</tr>
+							</thead>
+							<tbody>
+								
+								{% for produkt in shporta %}
+								<tr>
+									<td class="product-col">
+										<img src="{{ produkt.produkt.foto.url }}" alt="">
+										<div class="pc-title">
+											<h4>{{ produkt.produkt.titulli }}</h4>
+											<p>${{ produkt.produkt.cmimi }}</p>
+										</div>
+									</td>
+									<td class="quy-col">
+										<div class="quantity">
+					                        <div class="pro-qty">
+												<input type="text" value="1">
+											</div>
+                    					</div>
+									</td>
+									<td class="size-col"><h4>Mesatar 40</h4></td>
+									<td class="total-col"><h4>€{{ produkt.produkt.cmimi }}</h4></td>
+									<td class="size-col">
+										<div class="quantity">
+											
+											<a type="submit" style="color: red" href="/fshij/{{ produkt.produkt.id }}" ><i class="flaticon-cancel"></i></a>
+										
+										</div>
+									</td>
+								</tr>
+								{% endfor %}
+								
+						</table>
+						</div>
+						<div class="total-cost">
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 card-right">
+					<form class="promo-code-form">
+						<input type="text" placeholder="Vendos nje redeem code..">
+						<button>Vendos</button>
+					</form>
+					<a href="" class="site-btn">Vezhdo pagesen</a>
+					<a href="" class="site-btn sb-dark">Vazhdo Blerjen</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- cart section end -->
+
+	<!-- Related product section -->
+	<section class="related-product-section">
+		<div class="container">
+			<div class="section-title text-uppercase">
+				<h2>Vazhdo Blerjen</h2>
+			</div>
+			<div class="row">
+				{% for produkt in new_produkt %}
+				<div class="col-lg-3 col-sm-6">
+					<div class="product-item">
+						<div class="pi-pic">
+							<div class="tag-new">E re</div>
+							<div style="width: 100%;height: 400px; background-image: url('{{ produkt.produkt.foto.url }}');background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;"></div>
+						
+							<div class="pi-links">
+								<a href="/shto_shport/{{ produkt.produkt.id }}" class="add-card"><i class="flaticon-bag"></i><span style="font-size: 9px">SHTO NE SHPORTE</span></a>
+								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+							</div>
+						</div>
+						<div class="pi-text">
+							<h6>€{{ produkt.produkt.cmimi }}</h6>
+							<p>{{ produkt.produkt.titulli }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- Related product section end -->
+
+
+
+	{% endblock %}
